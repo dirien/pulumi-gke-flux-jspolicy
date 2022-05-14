@@ -1,0 +1,11 @@
+{
+  "name": "infra",
+  "devDependencies": {
+    "@types/node": "17.0.33"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "3.32.1",
+    "@pulumi/google-native": "0.18.2",
+    "@pulumi/random": "4.6.0"
+  }
+}

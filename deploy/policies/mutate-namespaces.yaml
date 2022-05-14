@@ -1,0 +1,12 @@
+apiVersion: policy.jspolicy.com/v1beta1
+kind: JsPolicy
+metadata:
+  name: mutate-namespaces.ediri.io
+spec:
+  operations: [
+    CREATE
+  ]
+  resources: [
+    namespaces
+  ]
+  type: Mutating
