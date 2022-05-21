@@ -1,0 +1,43 @@
+{
+  "name": "@jspolicy/jspolicy-typescript-starter",
+  "version": "0.0.1",
+  "description": "A simple project that shows how to use typescript with jspolicy",
+  "main": "dist/index.js",
+  "typings": "dist/index",
+  "files": [
+    "dist/**/!(bundle).*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@jspolicy/types": "0.0.4",
+    "@jspolicy/webpack-plugin": "0.0.5",
+    "@kubernetes/client-node": "0.16.3",
+    "@types/jest": "27.4.1",
+    "concurrently": "7.1.0",
+    "jest": "27.4.1",
+    "nodemon": "2.0.16",
+    "ts-jest": "27.1.4",
+    "tsc-watch": "5.0.3",
+    "typescript": "4.6.4",
+    "webpack": "5.72.0",
+    "webpack-cli": "4.9.2"
+  },
+  "scripts": {
+    "compile": "tsc && npm run bundle",
+    "compile-clean": "rm -rf dist/ && tsc && npm run bundle",
+    "bundle": "webpack --config webpack.config.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Webpack\" -c \"yellow.bold,cyan.bold\" \"npm run watch-tsc\" \"npm run watch-webpack\"",
+    "watch-apply": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Webpack,kubectl\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-tsc\" \"npm run watch-webpack\" \"nodemon --watch policies -e yaml,yml --exec \\\"kubectl apply -f policies/\\\"\"",
+    "watch-test": "nodemon --watch policies -e yaml,yml --exec \"kubectl apply -f policies/\"",
+    "watch-tsc": "tsc && tsc-watch --onSuccess \"npm run bundle\"",
+    "watch-webpack": "nodemon --watch src -e yaml,yml --exec \"webpack --config webpack.config.js\"",
+    "test": "jest --env=node --colors --coverage test",
+    "prepublishOnly": "npm run test && npm run compile-clean"
+  },
+  "author": "Engin Diri",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "github.com/loft-sh/jspolicy-typescript-starter"
+  }
+}

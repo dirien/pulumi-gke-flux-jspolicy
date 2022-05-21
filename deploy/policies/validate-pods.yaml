@@ -1,0 +1,14 @@
+apiVersion: policy.jspolicy.com/v1beta1
+kind: JsPolicy
+metadata:
+  name: validate-pods.ediri.io
+spec:
+  operations: [
+    CREATE,
+    UPDATE,
+    CONNECT
+  ]
+  resources: [
+    pods
+  ]
+  timeoutSeconds: 30

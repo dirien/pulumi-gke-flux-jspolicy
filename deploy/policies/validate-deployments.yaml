@@ -1,0 +1,13 @@
+apiVersion: policy.jspolicy.com/v1beta1
+kind: JsPolicy
+metadata:
+  name: validate-deployments.ediri.io
+spec:
+  operations: [
+    CREATE,
+    UPDATE
+  ]
+  resources: [
+    deployments
+  ]
+  timeoutSeconds: 30
